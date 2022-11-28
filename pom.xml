@@ -10,7 +10,19 @@
         </parent>
    <properties>
      <maven.compiler.source>1.8</maven.compiler.source>
+           <!-- the path to this project in SCM (without /trunk suffix, if in Subversion) -->
+           <scm.path>GithubActions</scm.path>
+           <!-- Remove these when switching to a parent pom which contains these -->
+           <github.url>https://github.com/johny-test-repo</github.url>
+           <github.connection>scm:git:${github.url}</github.connection>
+           <github.devConnection>scm:git:${github.url}</github.devConnection>
   </properties>
+        <scm>
+                <url>${github.url}/${scm.path}</url>
+                <connection>${github.connection}/${scm.path}</connection>
+                <developerConnection>${github.devConnection}/${scm.path}</developerConnection>
+                <tag>HEAD</tag>
+        </scm>
         <groupId>com.johny</groupId>
         <artifactId>GithubActions</artifactId>
         <version>0.0.1-SNAPSHOT</version>
