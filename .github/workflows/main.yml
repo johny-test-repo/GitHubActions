@@ -13,19 +13,3 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build
         run: mvn -B -Dmaven.test.failure.ignore=true package
-        
-      - name: Get groupId and artifactId from pom file
-        run: |
-          echo project_groupId=$(mvn help:evaluate -Dexpression=project.groupId -q -DforceStdout) >> $GITHUB_ENV
-          
-          echo project_artifactId=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout) >> $GITHUB_ENV
-              
-      - name: Get the war name from pom file
-        run: |
-          WAR_NAME=$(grep finalName pom.xml  | cut -f 2 -d '>' | cut -f 1 -d '<')
-          echo $WAR_NAME.war
-          
-          if [[ -z $WAR_NAME ]]; then
-              ARTIFACT_ID=$project_artifactId;
-             echo "Test Johny $ARTIFACT_ID";
-          fi;
