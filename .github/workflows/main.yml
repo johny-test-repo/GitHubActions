@@ -2,8 +2,7 @@
 name: TestMavenBuild
 
 on:
-  push:
-    branches: [ main, '[A-Z]-[0-9]+**' ]
+  workflow_dispatch:
 
 jobs:
   build:
